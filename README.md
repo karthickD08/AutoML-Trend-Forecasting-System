@@ -245,11 +245,6 @@ Phase 4: ExplainabilityEngine(df, target_col).fit(algo).explain()
 
 ---
 
-## Interview answer: why not just use AutoML?
-
-> "I built this to understand what's inside AutoML frameworks — specifically the meta-learning layer that most engineers treat as a black box. I implemented meta-feature extraction from scratch across three families (statistical, model-based, landmarking), trained a meta-learner on OpenML benchmark data, and added explainability that commercial AutoML tools strip out. The goal wasn't to replicate AutoML — it was to understand and expose its internals."
-
----
 
 ## Comparable systems
 
