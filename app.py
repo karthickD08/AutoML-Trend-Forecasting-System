@@ -11,6 +11,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import os, json
+from io import StringIO
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -71,7 +72,7 @@ st.markdown("""
 @st.cache_data(show_spinner=False)
 def run_profiler(df_json, target_col, datetime_col):
     from automl_profiler import profile_dataset
-    df = pd.read_json(df_json)
+    df = pd.read_json(StringIO(df_json))
     if datetime_col and datetime_col != "None":
         df[datetime_col] = pd.to_datetime(df[datetime_col])
     return profile_dataset(df, target_col=target_col,
