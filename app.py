@@ -82,7 +82,7 @@ def run_profiler(df_json, target_col, datetime_col):
 def run_meta_extractor(df_json, profile_dict_json, target_col):
     from automl_profiler import profile_dataset
     from meta_extracter import extract_meta_features
-    df = pd.read_json(df_json)
+    df = pd.read_json(StringIO(df_json))
     target_col_clean = target_col
     profile = profile_dataset(df, target_col=target_col_clean)
     return extract_meta_features(df, profile, target_col=target_col_clean)
@@ -90,7 +90,7 @@ def run_meta_extractor(df_json, profile_dict_json, target_col):
 @st.cache_data(show_spinner=False)
 def run_recommend(df_json, target_col, datetime_col, model_path, top_k):
     from algorithm_recommender import recommend
-    df = pd.read_json(df_json)
+    df = pd.read_json(StringIO(df_json))
     if datetime_col and datetime_col != "None":
         df[datetime_col] = pd.to_datetime(df[datetime_col])
     results, profile, mf = recommend(
